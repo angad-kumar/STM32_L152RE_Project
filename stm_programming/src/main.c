@@ -47,6 +47,7 @@ void uart_gpio_init()
 
 void uart_init()
 {
+	uart_gpio_init();
 	//Enabling clock for UART
 	RCC->APB1ENR |= RCC_APB1ENR_UART4EN;
 
@@ -60,4 +61,15 @@ void uart_init()
 	UART4->CR1 |= USART_CR1_RE;
 	UART4->CR1 |= USART_CR1_TE;
 
+	UART4->DR = 10;
+	while (!(UART4>SR & USART_));
+}
+
+
+void delay(volatile long time)
+{
+	for(int i=0;i<time;i++)
+	{
+		for(int i=time;i>0;i--);
+	}
 }
